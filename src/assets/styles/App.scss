@@ -1,5 +1,15 @@
 body {
     margin: 0;
-    background-color: aquamarine;
-    color: rgb(77, 77, 77);
-}
+    font-family: 'Muli', sans-serif;
+    background: #8f57fd;
+  }
+  
+  * {
+    box-sizing: border-box;
+    overflow: auto;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
