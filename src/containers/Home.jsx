@@ -10,7 +10,7 @@ import useInitialState from '../hooks/useInitialState'
 
 const API = "http://localhost:3000/initalState"
 
-const App = () => {
+const Home = () => {
     const [videos, categories] = useInitialState(API)
     return(
         <div className="App">
@@ -31,4 +31,4 @@ const App = () => {
     )
 }
 
-export default App
+export default Home
