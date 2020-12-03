@@ -17,9 +17,12 @@ const Home = ({ lists }) => {
                 lists[category].length > 0 && (
                     <Categories key={category} title={category}>
                         <Carousel>
-                            {lists[category].map(item => (
-                                <CarouselItem key={item.id} {...item} />
-                            ))}
+                            {lists[category].map(item => {
+                                const ownerList = category === "mylist"
+                               return (
+                                    <CarouselItem key={item.id} {...item} ownerList={ownerList}/>
+                               ) 
+                            })}
                         </Carousel>
                     </Categories>
                 )))}
