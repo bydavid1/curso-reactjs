@@ -25,6 +25,14 @@ const reducer = (state, action) => {
             console.log(newState)
             return newState
 
+        case actions.loginRequest:
+            newState = {
+                ...state,
+                user: action.payload
+            }
+
+            console.log(newState)
+            return newState
         default:
              return state
     }
