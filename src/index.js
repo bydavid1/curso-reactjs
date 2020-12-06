@@ -21,7 +21,7 @@ const initialState = {
                 "duration": 164,
                 "cover": "https://cdn.pixabay.com/photo/2012/12/20/10/12/align-fingers-71282_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 3,
@@ -34,7 +34,7 @@ const initialState = {
                 "duration": 137,
                 "cover": "https://cdn.pixabay.com/photo/2020/11/15/22/08/person-5747420_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 4,
@@ -47,7 +47,7 @@ const initialState = {
                 "duration": 163,
                 "cover": "https://cdn.pixabay.com/photo/2020/04/02/19/39/dog-4996559_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 5,
@@ -60,7 +60,7 @@ const initialState = {
                 "duration": 194,
                 "cover": "https://cdn.pixabay.com/photo/2016/02/11/16/59/dog-1194083_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 6,
@@ -73,7 +73,7 @@ const initialState = {
                 "duration": 124,
                 "cover": "https://cdn.pixabay.com/photo/2020/11/06/03/43/protective-suit-5716753_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 7,
@@ -86,7 +86,7 @@ const initialState = {
                 "duration": 179,
                 "cover": "https://cdn.pixabay.com/photo/2019/12/26/10/44/horse-4720178_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             }
         ],
         "originals": [{
@@ -100,7 +100,7 @@ const initialState = {
                 "duration": 148,
                 "cover": "https://cdn.pixabay.com/photo/2011/12/14/12/11/astronaut-11080_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 9,
@@ -113,7 +113,7 @@ const initialState = {
                 "duration": 128,
                 "cover": "https://cdn.pixabay.com/photo/2020/10/23/09/02/mountain-5678172_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 10,
@@ -126,7 +126,7 @@ const initialState = {
                 "duration": 346,
                 "cover": "https://cdn.pixabay.com/photo/2020/10/01/17/11/temple-5619197_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 11,
@@ -139,7 +139,7 @@ const initialState = {
                 "duration": 226,
                 "cover": "https://cdn.pixabay.com/photo/2020/10/23/16/50/woman-5679284_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 12,
@@ -152,7 +152,7 @@ const initialState = {
                 "duration": 190,
                 "cover": "https://cdn.pixabay.com/photo/2020/04/04/17/06/street-5003132_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             },
             {
                 "id": 13,
@@ -165,7 +165,7 @@ const initialState = {
                 "duration": 160,
                 "cover": "https://cdn.pixabay.com/photo/2015/03/26/09/48/chicago-690364_960_720.jpg",
                 "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                "source": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             }
         ]
     }
