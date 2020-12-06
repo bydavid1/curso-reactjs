@@ -33,6 +33,12 @@ const reducer = (state, action) => {
 
             console.log(newState)
             return newState
+
+        case actions.logoutRequest:
+            return {
+                ...state,
+                user: action.payload,
+            }
         default:
              return state
     }
