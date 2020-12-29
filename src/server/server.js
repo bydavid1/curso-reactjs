@@ -2,6 +2,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
+import helmet from 'helmet';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
@@ -10,25 +11,12 @@ import { renderRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import reducer from '../frontend/reducers';
-import Layout from '../frontend/components/Layout';
 import initialState from '../frontend/initialState';
 
 dotenv.config();
 const app = express();
 
 const { ENV, PORT } = process.env;
-
-// if (ENV === 'development') {
-//     console.log('Development mode');
-//     const webpackConfig = require('../../webpack.config');
-//     const webpackDevMiddleware = require('webpack-dev-middleware');
-//     const webpackHotMiddleware = require('webpack-hot-middleware');
-//     const compiler = webpack(webpackConfig);
-//     const serverConfig = { port: PORT, hot: true };
-
-//     app.use(webpackDevMiddleware(compiler, serverConfig));
-//     app.use(webpackHotMiddleware(compiler));
-// }
 
 if (ENV === 'development') {
   console.log('Development mode');
@@ -41,6 +29,23 @@ if (ENV === 'development') {
 
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
+} else {
+  app.use(express.static(`${__dirname}/public`));
+  app.use(helmet());
+  app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        'default-src': ["'self'", 'https://fonts.googleapis.com'],
+        'script-src': ["'self'", "'sha256-BAuOvS5gsD2PdZdOpJJ12KC3YxoM0AWLuU/2d5lzdXM='"],
+        'img-src': ["'self'", 'https://cdn.pixabay.com/'],
+        //'style-src-elem': ["'self'", 'https://fonts.googleapis.com'],
+        'font-src': ['https://fonts.gstatic.com'],
+        'media-src': ['*'],
+      },
+    }),
+  );
+  app.use(helmet.permittedCrossDomainPolicies());
+  app.disable('x-powered-by');
 }
 
 const setResponse = (html, preloadedState) => {
@@ -68,7 +73,7 @@ const renderApp = (req, res) => {
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={{}}>
-        <Layout>{renderRoutes(serverRoutes)}</Layout>
+        {renderRoutes(serverRoutes)}
       </StaticRouter>
     </Provider>,
   );
@@ -80,5 +85,17 @@ app.get('*', renderApp);
 
 app.listen(PORT, (error) => {
   if (error) console.log(error);
-  else console.log('server running on port 3000');
+  else console.log(`server running on port ${PORT}`);
 });
+
+// if (ENV === 'development') {
+//     console.log('Development mode');
+//     const webpackConfig = require('../../webpack.config');
+//     const webpackDevMiddleware = require('webpack-dev-middleware');
+//     const webpackHotMiddleware = require('webpack-hot-middleware');
+//     const compiler = webpack(webpackConfig);
+//     const serverConfig = { port: PORT, hot: true };
+
+//     app.use(webpackDevMiddleware(compiler, serverConfig));
+//     app.use(webpackHotMiddleware(compiler));
+// }
