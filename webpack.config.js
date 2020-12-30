@@ -1,67 +1,91 @@
-const path = require("path")
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const path = require('path');
+const webpack = require('webpack');
+//const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+
+require('dotenv').config();
+
+const isDev = (process.env.ENV === 'development');
+const entry = ['./src/frontend/index.js'];
+
+if (isDev) {
+  entry.push('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload=true');
+}
 
 module.exports = {
-    entry: "./src/index.js",
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/'
-    },
-    resolve: {
-        extensions: ['.js', '.jsx']
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
+  entry,
+  mode: process.env.ENV,
+  output: {
+    path: path.resolve(__dirname, 'src/server/public'),
+    filename: isDev ?  'assets/app.js' : 'assets/app-[hash].js',
+    publicPath: '/',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      // {
+      //   test: /\.html$/,
+      //   use: [
+      //     {
+      //       loader: 'html-loader',
+      //     },
+      //   ],
+      // },
+      {
+        test: /\.(s*)css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[hash].[ext]',
             },
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: 'html-loader'
-                    }
-                ]
-            },
-            {
-                test: /\.(s*)css$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                    },
-                    'css-loader',
-                    'sass-loader'
-                ]
-            },
-            {
-                test: /\.(png|jpe?g|gif)$/,
-                use: [
-                    {
-                        'loader': 'file-loader',
-                        options: {
-                            name: 'assets/[hash].[ext]'
-                        }
-                    },
-                ]
-            }
-        ]
-    },
-    devServer : {
-        historyApiFallback: true
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-            filename: './index.html'
-        }),
-        new MiniCssExtractPlugin({
-            filename: 'assets/[name].css'
-        })
-    ]
-}
+          },
+        ],
+      },
+    ],
+  },
+  devServer: {
+    historyApiFallback: true,
+  },
+  plugins: [
+    isDev ? new webpack.HotModuleReplacementPlugin() : () => { },
+    isDev ? () => {} : new CompressionWebpackPlugin({
+      test: /\.js$|\.css$/,
+      filename: '[path].gz',
+    }),
+    isDev ? () => {} : new WebpackManifestPlugin(),
+    // new HtmlWebpackPlugin({
+    //   template: "./public/index.html",
+    //   filename: "./index.html",
+    // }),
+    new MiniCssExtractPlugin({
+      filename: isDev ? 'assets/app.css' : 'assets/app-[hash].css',
+    }),
+  ],
+};
